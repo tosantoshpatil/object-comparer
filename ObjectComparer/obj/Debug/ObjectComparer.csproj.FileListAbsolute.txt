@@ -1,0 +1,4 @@
+D:\Practice\object-comparer\ObjectComparer\bin\Debug\ObjectComparer.dll
+D:\Practice\object-comparer\ObjectComparer\bin\Debug\ObjectComparer.pdb
+D:\Practice\object-comparer\ObjectComparer\obj\Debug\ObjectComparer.dll
+D:\Practice\object-comparer\ObjectComparer\obj\Debug\ObjectComparer.pdb
