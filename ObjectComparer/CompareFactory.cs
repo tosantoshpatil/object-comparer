@@ -48,6 +48,8 @@ namespace ObjectComparer
                 return new ArrayCompare();
             else if (objectType == Common.ObjectType.Object.ToString())
                 return new ObjectCompare();
+            else if (objectType == Common.ObjectType.List.ToString())
+                return new ListCompare();
             else
                 return new DefaultCompare();
         }

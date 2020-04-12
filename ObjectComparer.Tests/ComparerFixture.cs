@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ObjectComparer.Tests
@@ -18,25 +19,42 @@ namespace ObjectComparer.Tests
             string first = "ABCD", second = "ABCD";
             Assert.IsTrue(Comparer.AreSimilar(first, second));
 
-            Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
         public void stringnull_stringvalues_are_similar_test()
         {
             string first = null, second = "ABCD";
-            Assert.IsTrue(Comparer.AreSimilar(first, second));
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
+        }
+        [TestMethod]
+        public void string_stringvalues_are_notsimilar_test()
+        {
+            string first = "GHGHJ", second = "ABCD";
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
         public void int_values_are_similar_test()
         {
-            int first = 1,  second = 2;
+            int first = 1, second = 1;
             Assert.IsTrue(Comparer.AreSimilar(first, second));
+        }
+        [TestMethod]
+        public void int_values_are_Notsimilar_test()
+        {
+            int first = 1,  second = 2;
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
         public void float_values_are_similar_test()
         {
-            float first = 1.2F, second = 2.1F;
+            float first = 1.2F, second = 1.2F;
             Assert.IsTrue(Comparer.AreSimilar(first, second));
+        }
+        [TestMethod]
+        public void float_values_are_notsimilar_test()
+        {
+            float first = 1.2F, second = 2.1F;
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
         public void IntArray_values_are_similar_test()
@@ -46,7 +64,7 @@ namespace ObjectComparer.Tests
             Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
-        public void IntArrayElementPosition_values_are_similar_test()
+        public void IntArrayDifferentElementPosition_values_are_similar_test()
         {
             int[] first = new int[] { 1, 2, 3 };
             int[] second = new int[] { 3,2,1 };
@@ -58,7 +76,7 @@ namespace ObjectComparer.Tests
         {
             int[] first = new int[] { 1, 2, 3 };
             int[] second = new int[] { 3, 2, 1 ,4};
-            Assert.IsTrue(Comparer.AreSimilar(first, second));
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
         public void StingArray_values_are_similar_test()
@@ -68,11 +86,11 @@ namespace ObjectComparer.Tests
             Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
-        public void StingArraynotequal_values_are_similar_test()
+        public void StingArray_values_are_notsimilar_test()
         {
             string[] first = new string[] { "abcd", "pqr" };
             string[] second = new string[] { "dfs", "pdsfdfqr" };
-            Assert.IsTrue(Comparer.AreSimilar(first, second));
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
 
         [TestMethod]
@@ -93,7 +111,7 @@ namespace ObjectComparer.Tests
 
             Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
-        public void NotMatchingObject_values_are_similar_test()
+        public void Object_values_are_notsimilar_test()
         {
             var first = new
             {
@@ -108,7 +126,7 @@ namespace ObjectComparer.Tests
                 thirdProperty = false
             };
 
-            Assert.IsTrue(Comparer.AreSimilar(first, second));
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
 
         [TestMethod]
@@ -128,6 +146,131 @@ namespace ObjectComparer.Tests
             };
 
             Assert.IsTrue(Comparer.AreSimilar(first, second));
+        }
+
+        [TestMethod]       
+        public void Object_with_list_similar_test()
+        {
+            var s1 =new Student()
+            {
+                Id = 101,
+                Name = "Mahesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            };
+            var s2 = new Student()
+            {
+                Id = 101,
+                Name = "Mahesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            };    
+            Assert.IsTrue(Comparer.AreSimilar(s1, s2));
+        }
+        [TestMethod]
+        public void Object_with_list_Not_similar_test()
+        {
+            var s1 = new Student()
+            {
+                Id = 101,
+                Name = "Mahesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            };
+            var s2 = new Student()
+            {
+                Id = 101,
+                Name = "Santosh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            };
+            Assert.IsFalse(Comparer.AreSimilar(s1, s2));
+        }
+
+        [TestMethod]
+        public void List_Of_Object_similar_test()
+        {
+            var s1 = new List<Student>();
+            s1.Add(new Student()
+            {
+                Id = 101,
+                Name = "Mahesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            });
+            s1.Add(new Student()
+            {
+                Id = 102,
+                Name = "Ramesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            });
+
+            var s2 = new List<Student>();
+            s2.Add(new Student()
+            {
+                Id = 101,
+                Name = "Mahesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            });
+            s2.Add(new Student()
+            {
+                Id = 102,
+                Name = "Ramesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            });
+
+            Assert.IsTrue(Comparer.AreSimilar(s1, s2));
+
+        }
+        [TestMethod]
+        public void List_Of_Object_Not_similar_test()
+        {
+            var s1 = new List<Student>();
+            s1.Add(new Student()
+            {
+                Id = 101,
+                Name = "Mahesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            });
+            s1.Add(new Student()
+            {
+                Id = 102,
+                Name = "Ramesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            });
+
+            var s2 = new List<Student>();
+            s2.Add(new Student()
+            {
+                Id = 101,
+                Name = "Raju",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5,}
+            });
+            s2.Add(new Student()
+            {
+                Id = 102,
+                Name = "Ramesh",
+                Codes = new string[] { "MH", "IN" },
+                Marks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+            });
+
+            Assert.IsFalse(Comparer.AreSimilar(s1, s2));
+
+        }
+
+
+        public class Student
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string[] Codes { get; set; }
+            public List<int> Marks { get; set; }
         }
 
     }

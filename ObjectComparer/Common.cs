@@ -13,7 +13,8 @@ namespace ObjectComparer
            ValueType,
             String,
             Object,
-            Array
+            Array,
+            List
            
         }
     }

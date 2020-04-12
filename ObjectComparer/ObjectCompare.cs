@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -38,8 +39,18 @@ namespace ObjectComparer
                     if (!arrayComparer.Comparer(pi.GetValue(first) as Array, pi.GetValue(second) as Array))
                         return false;
                 }
+                else if (pi.PropertyType.Name == typeof(List<>).Name)
+                {
+                    Type type = typeof(T);
+                    var value1 = type.GetProperty(pi.Name).GetValue(first) as IEnumerable;
+                    var value2 = type.GetProperty(pi.Name).GetValue(second) as IEnumerable;
 
-            }
+                    ListCompare lst = new ListCompare();
+                    if (!lst.Comparer(value1, value2))
+                        return false;
+                }
+
+                }
 
             return true;
         }
