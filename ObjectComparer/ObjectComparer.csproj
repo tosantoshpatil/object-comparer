@@ -41,16 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrayCompare.cs" />
+    <Compile Include="Comparer\ArrayCompare.cs" />
     <Compile Include="Common.cs" />
-    <Compile Include="CompareFactory.cs" />
-    <Compile Include="Comparer.cs" />
-    <Compile Include="DefaultCompare.cs" />
-    <Compile Include="ICompare.cs" />
-    <Compile Include="ListCompare.cs" />
-    <Compile Include="ObjectCompare.cs" />
+    <Compile Include="ComparerFactory\CompareFactory.cs" />
+    <Compile Include="Comparer\Comparer.cs" />
+    <Compile Include="Comparer\DefaultCompare.cs" />
+    <Compile Include="Icomparer\ICompare.cs" />
+    <Compile Include="Comparer\ListCompare.cs" />
+    <Compile Include="Comparer\ObjectCompare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValueCompare.cs" />
+    <Compile Include="Comparer\ValueCompare.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

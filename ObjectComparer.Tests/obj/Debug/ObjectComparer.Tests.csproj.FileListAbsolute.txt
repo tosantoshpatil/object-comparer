@@ -1,3 +1,6 @@
+D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\ObjectComparer.Tests.dll
 D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\ObjectComparer.Tests.pdb
 D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
@@ -10,6 +13,3 @@ D:\Practice\object-comparer\ObjectComparer.Tests\obj\Debug\ObjectComparer.Tests.
 D:\Practice\object-comparer\ObjectComparer.Tests\obj\Debug\ObjectComparer.Tests.csproj.CopyComplete
 D:\Practice\object-comparer\ObjectComparer.Tests\obj\Debug\ObjectComparer.Tests.dll
 D:\Practice\object-comparer\ObjectComparer.Tests\obj\Debug\ObjectComparer.Tests.pdb
-D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
-D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
-D:\Practice\object-comparer\ObjectComparer.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
