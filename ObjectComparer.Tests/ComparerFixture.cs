@@ -13,45 +13,53 @@ namespace ObjectComparer.Tests
             string first = null, second = null;
             Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
+
         [TestMethod]
-        public void string_values_are_similar_test()
+        public void Valuestring_Nullstring_values_are_not_similar_test()
+        {
+            string first = "ABCD", second = null;
+            bool result = Comparer.AreSimilar(first, second);
+            Assert.AreEqual(false,result);
+        }
+        [TestMethod]
+        public void String_values_are_similar_test()
         {
             string first = "ABCD", second = "ABCD";
             Assert.IsTrue(Comparer.AreSimilar(first, second));
 
         }
         [TestMethod]
-        public void stringnull_stringvalues_are_similar_test()
+        public void Stringnull_stringvalues_are_not_similar_test()
         {
             string first = null, second = "ABCD";
             Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
-        public void string_stringvalues_are_notsimilar_test()
+        public void String_stringvalues_are_notsimilar_test()
         {
             string first = "GHGHJ", second = "ABCD";
             Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
-        public void int_values_are_similar_test()
+        public void Int_values_are_similar_test()
         {
             int first = 1, second = 1;
             Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
-        public void int_values_are_Notsimilar_test()
+        public void Int_values_are_Notsimilar_test()
         {
             int first = 1,  second = 2;
             Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
-        public void float_values_are_similar_test()
+        public void Float_values_are_similar_test()
         {
             float first = 1.2F, second = 1.2F;
             Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
-        public void float_values_are_notsimilar_test()
+        public void Float_values_are_notsimilar_test()
         {
             float first = 1.2F, second = 2.1F;
             Assert.IsFalse(Comparer.AreSimilar(first, second));
@@ -79,6 +87,13 @@ namespace ObjectComparer.Tests
             Assert.IsFalse(Comparer.AreSimilar(first, second));
         }
         [TestMethod]
+        public void IntArray_values_are_not_similar_test()
+        {
+            int[] first = new int[] { 1, 2, 3 };
+            int[] second = new int[] { 2, 1, 4 };
+            Assert.IsFalse(Comparer.AreSimilar(first, second));
+        }
+        [TestMethod]
         public void StingArray_values_are_similar_test()
         {
             string[] first = new string[] { "abcd","pqr" };
@@ -94,7 +109,7 @@ namespace ObjectComparer.Tests
         }
 
         [TestMethod]
-        public void Object_values_are_similar_test()
+        public void Object_Property_values_are_similar_test()
         {
             var first = new
             {
@@ -111,7 +126,7 @@ namespace ObjectComparer.Tests
 
             Assert.IsTrue(Comparer.AreSimilar(first, second));
         }
-        public void Object_values_are_notsimilar_test()
+        public void Object_Property_values_are_notsimilar_test()
         {
             var first = new
             {
